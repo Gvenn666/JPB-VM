@@ -1,0 +1,64 @@
+26 Registers A-Z, 32-bit
+State Register Z/NZ
+64KB of Addressable Memory
+2-address Instruction Format
+
+
+JPB VM
+
+
+NOP 0 0
+HLT 0 0
+LD  r a
+LDI r v
+ST  r a
+ADD r r
+SUB r r
+DIV r r
+MUL r r
+AND r r
+EOR r r
+NOT r r
+OR  r r
+BRK a 0
+BRZ r a
+BNZ r a
+ASL r 0
+ASR r 0
+LSL r 0
+LSR r 0
+OUT r 0
+INP r 0
+PSH r 0
+POP r 0
+CALL a 0
+RETURN 0 0
+
+JP-Script
+
+function main(nil) {
+  A = 'A'
+  PRINT A
+}
+
+CALL :main
+
+main:
+ LDI A 'A
+ OUT A
+ RETURN
+
+function factorial(A) {
+  IF A == 1 return 1
+  return A * factorial (A-1)
+}
+
+factorial:
+ LDI B 1
+ SUB A B
+ BRZ B :return1
+ 
+ 
+return1:
+ PSH 1
+ RETURN
